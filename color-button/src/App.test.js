@@ -13,10 +13,13 @@ test('Initial Condition and when clicked', () => {
   render(<App />)
   const buttonColor = screen.getByRole("button", { name: "Change to blue" });
   expect(buttonColor).toBeEnabled()
-  const input = screen.getByRole("checkbox")
+  const input = screen.getByRole("checkbox",{name : "Disable"})
   expect(input).not.toBeChecked()
   fireEvent.click(input);
   expect(buttonColor).toBeDisabled()
-  expect(input).toBeChecked()
+  expect(buttonColor).toHaveStyle({backgroundColor : "grey"})
+  expect(input).toBeChecked();
+  fireEvent.click(input)
+  expect(buttonColor).toHaveStyle({backgroundColor : "red"})
 });
 

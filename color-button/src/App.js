@@ -5,17 +5,18 @@ import React, { useState } from "react"
 function App() {
   const [color, setColor] = useState('red');
   const newColor = color === "red" ? "blue" : "red"
-  const [disbled,setDisabled] = useState(false)
+  const [disabled,setDisabled] = useState(false)
   const changeColor = () => {
     setColor(newColor)
   }
   const handleDisabled = () =>{
-    setDisabled(!disbled)
+    setDisabled(!disabled)
   }
   return (
     <div >
-      <button disabled={disbled} onClick={changeColor} style={{ backgroundColor: color }}>Change to {newColor}</button>
-      <input onClick = {handleDisabled}  type="checkbox"></input>
+      <button disabled={disabled} onClick={changeColor} style={{ backgroundColor: disabled ? "grey " : color }}>Change to {newColor}</button>
+      <input id = "disable-button" onClick = {handleDisabled}  type="checkbox"></input>
+      <label htmlFor='disable-button'>Disable</label>
     </div>
   );
 }
