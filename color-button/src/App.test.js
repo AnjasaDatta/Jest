@@ -1,5 +1,6 @@
 import { render, screen,fireEvent } from '@testing-library/react';
 import App from './App';
+import {camelCaseLetters} from "./App"
 
 test('button has correct initial color', () => {
   render(<App />)
@@ -23,3 +24,14 @@ test('Initial Condition and when clicked', () => {
   expect(buttonColor).toHaveStyle({backgroundColor : "red"})
 });
 
+describe('spaces before camelCase letters',()=>{
+  test('no inner capital letters',()=>{
+    expect(camelCaseLetters('Red')).toBe('Red');
+  });
+  test('one inner capital letters',()=>{
+    expect(camelCaseLetters('MidnightBlue')).toBe('Midnight Blue');
+  });
+  test('multiple inner capital letters',()=>{
+    expect(camelCaseLetters('MediumVioletRed')).toBe('Medium Violet Red');
+  });
+})
