@@ -3,15 +3,19 @@ import './App.css';
 import React, { useState } from "react"
 
 function App() {
-  const [color, setColor] = useState("red");
-  const [text, setText] = useState("Change to Blue")
+  const [color, setColor] = useState('red');
+  const newColor = color === "red" ? "blue" : "red"
+  const [disbled,setDisabled] = useState(false)
   const changeColor = () => {
-    setColor("blue");
-    setText("Change to Red")
+    setColor(newColor)
+  }
+  const handleDisabled = () =>{
+    setDisabled(!disbled)
   }
   return (
     <div >
-      <button onClick={changeColor} style={{ backgroundColor: color }}>{text}</button>
+      <button disabled={disbled} onClick={changeColor} style={{ backgroundColor: color }}>Change to {newColor}</button>
+      <input onClick = {handleDisabled}  type="checkbox"></input>
     </div>
   );
 }
